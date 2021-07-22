@@ -1,0 +1,59 @@
+body{
+font-family: Arial;
+background:#f7f7f7;
+}
+.body{
+max-width:1280px;
+padding:0 32px;
+margin:0 auto;
+}
+#mainplayer{
+width:640px;height:480px;background:lightblue;display:block;
+}
+button{
+padding:10px;
+background-color:#f3f3f3;
+border:1px solid #7f7f7f;
+cursor:pointer;
+outline:none;
+}
+.kwrapper{
+position:relative;
+    width: 640px;
+    height: 480px;
+}
+
+.vwrapper:fullscreen{
+	display: block;
+	border: none;
+	width: 100%!important;
+	height: 100%!important;
+	margin: 0px;
+	position: fixed;
+    top: 0px;
+    left: 0px
+}
+
+.status{
+  z-index: 2147483647;
+  position: absolute;
+  width: 100%;
+  background: silver;
+  display: flex;
+  top: 0;
+  right: 0;
+}
+
+.singleplayer{width:100%;height:100%;}
+.singleplayer[status] + .status:before {font-size:40px;color:black;z-index:2147483647;display:block;background:#fffb;padding:10px 20px;position:absolute;right:0;top:0;}
+.singleplayer[status="loading"] + .status:before{content:"loading";}
+.singleplayer[status="seeking"] + .status:before {content:"seeking";}
+.singleplayer[status="playing"] + .status:before {content:"playing";}
+.singleplayer[status="error"] + .status:before {content:"error";}
+.singleplayer[status="pause"] + .status:before {content:"pause";}
+.singleplayer[status="nodata"] + .status:before{content:"nodata";}
+
+.kwrapper video.singleplayer::-webkit-media-controls {
+#  display: none;
+}
+

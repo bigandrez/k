@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>New player design sample</title>
+        <link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../js/k-video.js"></script>
+	<script type="text/javascript" src="../js/k-video-reverse.js"></script>
+	<script type="text/javascript" src="../js/k-video-set.js"></script>
+	<script type="text/javascript" src="../js/k-video-debug.js"></script>
+</head>
+<body  onload="onload()">
+<div class="body">
+  <h1>k-video-set</h1>
+  <p>Component for playing multiple video clips as one large clip with reference to UTC time:<br>
+    <ul>
+      <li>No external dependensies - all in one</li>
+      <li>Support reverse playback</li>
+      <li>Promises for play, pause, seeking, loading functions</li>
+      <li>Support UTC time</li>
+      <li>Full media load support (via fetch function)</li>
+      <li>"status" attribute for css</li>
+      <li>Internal controls for video element is not supported</li>
+    </ul>
+  </p>
+  <div class="kwrapper">
+    <k-video-set fullload debuginfo id="mainplayer" class="singleplayer" playtime=1600000000000>
+        <source src="../media/135747.mp4" time=1600000000000 msec=61013></source>
+        <source src="../media/135848.mp4" time=1600000061013 msec=60757></source>
+        <source src="../media/135949.mp4" time=1600000121770 msec=61526></source>
+        <source src="../media/140051.mp4" time=1600000183296 msec=61541></source>
+        <source src="../media/140152.mp4" time=1600000244837 msec=60374></source>
+        <source src="../media/140253.mp4" time=1600000305211 msec=61781></source>
+        <source src="../media/140354.mp4" time=1600000366992 msec=44971></source>
+        <source src="../media/140526.mp4" time=1600000411963 msec=60160></source>
+        <source src="../media/140627.mp4" time=1600000472123 msec=61375></source>
+        <source src="../media/140728.mp4" time=1600000533498 msec=61041></source>
+    </k-video-set>
+    <div class="status"></div>
+  </div><br/>
+  <button onclick="mainplayer.play()">Play</button>    <button onclick="mainplayer.pause()">Pause</button>  Speed: <input id="srange" type="range" min="-16" max="16" value="1"><span id="rval">1</span>
+</div>
+<script>
+   function onload(){
+       srange.onchange = function(e){
+           rval.innerHTML = e.target.value;
+           mainplayer.playbackRate = parseInt(e.target.value);
+       }
+   }
+</script>
+
+</body>
+</html>

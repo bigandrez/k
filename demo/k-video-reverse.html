@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>New player design sample</title>
+        <link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../js/k-video.js"></script>
+	<script type="text/javascript" src="../js/k-video-reverse.js"></script>
+</head>
+<body  onload="onload()">
+<div class="body">
+  <h1>k-video-reverse</h1>
+  <p>Component for extend k-video component functions:<br>
+    <ul>
+      <li>No external dependensies - all in one</li>
+      <li>Support reverse playback</li>
+      <li>Promises for play, pause, seeking, loading functions</li>
+      <li>Support UTC time</li>
+      <li>Full media load support (via fetch function)</li>
+      <li>"status" attribute for css</li>
+      <li>Internal controls for video element is not supported</li>
+    </ul>
+  </p>
+  <div class="kwrapper">
+    <video is="k-video-reverse" fullload id="mainplayer" class="singleplayer" src="../media/135747.mp4" time=1600000000000 msec=10000></video>
+    <div class="status"></div>
+  </div><br/>
+  <button onclick="mainplayer.play()">Play</button>    <button onclick="mainplayer.pause()">Pause</button>  Speed: <input id="srange" type="range" min="-16" max="16" value="1"><span id="rval">1</span>
+</div>
+<script>
+   function onload(){
+       srange.onchange = function(e){
+           rval.innerHTML = e.target.value;
+           mainplayer.playbackRate = parseInt(e.target.value);
+       }
+   }
+</script>
+
+</body>
+</html>
